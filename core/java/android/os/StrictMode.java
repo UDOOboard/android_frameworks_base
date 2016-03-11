@@ -957,6 +957,9 @@ public final class StrictMode {
             doFlashes = true;
         }
 
+        // No red border
+		doFlashes = false;
+
         // Thread policy controls BlockGuard.
         int threadPolicyMask = StrictMode.DETECT_DISK_WRITE |
                 StrictMode.DETECT_DISK_READ |
