@@ -46,6 +46,10 @@
         <group gid="net_bt_stack" />
     </permission>
 
+    <permission name="android.permission.USB_ACCESS" >
+        <group gid="usb" />
+    </permission>
+
     <permission name="android.permission.NET_TUNNELING" >
         <group gid="vpn" />
     </permission>
