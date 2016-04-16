@@ -1043,6 +1043,11 @@
     <permission android:name="android.permission.BLUETOOTH_STACK"
         android:protectionLevel="signature" />
 
+    <!-- Allows to access usb devices @hide -->
+    <permission android:name="android.permission.USB_ACCESS"
+       android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+       android:protectionLevel="signature" />
+
     <!-- Allows applications to perform I/O operations over NFC.
          <p>Protection level: normal
     -->
