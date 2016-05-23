@@ -32,6 +32,8 @@ import android.util.Log;
 public final class InputEventConsistencyVerifier {
     private static final boolean IS_ENG_BUILD = "eng".equals(Build.TYPE);
 
+    private boolean DEBUG_ACTIVE = false;
+
     private static final String EVENT_TYPE_KEY = "KeyEvent";
     private static final String EVENT_TYPE_TRACKBALL = "TrackballEvent";
     private static final String EVENT_TYPE_TOUCH = "TouchEvent";
@@ -687,7 +689,9 @@ public final class InputEventConsistencyVerifier {
                     }
                 }
 
-                Log.d(mLogTag, mViolationMessage.toString());
+if (DEBUG_ACTIVE) {
+                 Log.d(mLogTag, mViolationMessage.toString());
+}
 
                 // Taint the event so that we do not generate additional violations from it
                 // further downstream.
