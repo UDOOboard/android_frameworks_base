@@ -4592,12 +4592,13 @@ public class ConnectivityService extends IConnectivityManager.Stub
             return;
         }
         if (DBG) {
-            log(networkAgent.name() + " EVENT_NETWORK_INFO_CHANGED, going from " +
+            log(networkAgent.name() + " EVENT_NETWORK_INFO_CHANGED, UUU going from " +
                     (oldInfo == null ? "null" : oldInfo.getState()) +
                     " to " + state);
         }
 
         if (state == NetworkInfo.State.CONNECTED) {
+            SystemProperties.set("sys.adb.net", "1");
             if (networkAgent.linkProperties.getHttpProxy() != null) {
                 String proxyHost = networkAgent.linkProperties.getHttpProxy().getHost();
                 String proxyPort = Integer.toString(networkAgent.linkProperties.getHttpProxy().getPort());
@@ -4665,6 +4666,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             // This has to happen after matching the requests, because callbacks are just requests.
             notifyNetworkCallbacks(networkAgent, ConnectivityManager.CALLBACK_PRECHECK);
         } else if (state == NetworkInfo.State.DISCONNECTED) {
+            SystemProperties.set("sys.adb.net", "0");
             networkAgent.asyncChannel.disconnect();
             if (networkAgent.isVPN()) {
                 synchronized (mProxyLock) {
