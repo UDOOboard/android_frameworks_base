@@ -14700,10 +14700,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             }
 
             for (int userId : UserManagerService.getInstance().getUserIds()) {
-                if (!mSettings.areDefaultRuntimePermissionsGrantedLPr(userId)) {
-                    grantPermissionsUserIds = ArrayUtils.appendInt(
-                            grantPermissionsUserIds, userId);
-                }
+                grantPermissionsUserIds = ArrayUtils.appendInt(grantPermissionsUserIds, userId);
             }
         }
         sUserManager.systemReady();

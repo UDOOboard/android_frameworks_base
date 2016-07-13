@@ -833,7 +833,7 @@ final class DefaultPermissionGrantPolicy {
         if (provider != null) {
             return getSystemPackageLPr(provider.packageName);
         }
-        return null;
+        return getSystemPackageLPr(authority);
     }
 
     private PackageParser.Package getPackageLPr(String packageName) {
